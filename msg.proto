@@ -15,3 +15,16 @@ message msgMat{
     int32 elt_size = 4;
     bytes mat_data = 5;
 }
+
+message msgDhash_features{
+    uint64 feature_high = 1;
+    uint64 feature_low = 2;
+}
+
+
+message msgPedestrian{
+    int32 id = 1;
+    int32 n_appearances = 2;
+    repeated msgMat mat = 3;
+    repeated msgDhash_features features = 4;
+}

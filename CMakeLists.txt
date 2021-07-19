@@ -1,6 +1,6 @@
 
 
-project(cpp_socket)
+project(socket_adapter)
 
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -fPIC  -std=c++11 -w  -O0")
 
@@ -29,33 +29,43 @@ message(${PROTOBUF_INCLUDE_DIR})
 file(GLOB SRC_FILES "./*.c*")
 message(${SRC_FILES})
 add_library(
-    socket_adapter SHARED
+    ${PROJECT_NAME} SHARED
     ${PROTO_SRCS}
     ${SRC_FILES}
 )
 target_link_libraries(
-    socket_adapter
+    ${PROJECT_NAME}
     ${PROTOBUF_LIBRARIES}
     ${OpenCV_LIBS}
 )
 
-
-
-
-add_executable(client
-    test/client.cpp
-)
-target_link_libraries(
-    client
-    socket_adapter
+set(socket_adapter_INCLUDE_DIRS  
+    ${CMAKE_CURRENT_SOURCE_DIR}/
+    PARENT_SCOPE
 )
 
-add_executable(
-    server
-    test/server.cpp
+set(socket_adapter_LIBS
+    ${PROJECT_NAME}
+    PARENT_SCOPE
 )
 
-target_link_libraries(
-    server
-    socket_adapter
-)
+
+
+
+# add_executable(client
+#     test/client.cpp
+# )
+# target_link_libraries(
+#     client
+#     socket_adapter
+# )
+
+# add_executable(
+#     server
+#     test/server.cpp
+# )
+
+# target_link_libraries(
+#     server
+#     socket_adapter
+# )
