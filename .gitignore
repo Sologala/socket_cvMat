@@ -1,3 +1,7 @@
+build
+*.vscode
+*DS_Storge
+
 # Prerequisites
 *.d
 
@@ -30,3 +34,4 @@
 *.exe
 *.out
 *.app
+*.pb.*
